@@ -1,0 +1,26 @@
+[2025-03-11T18:55:28.010+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: project2.insert_employees manual__2025-03-11T18:55:23.153643+00:00 [queued]>
+[2025-03-11T18:55:28.022+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: project2.insert_employees manual__2025-03-11T18:55:23.153643+00:00 [queued]>
+[2025-03-11T18:55:28.023+0000] {taskinstance.py:1279} INFO - 
+--------------------------------------------------------------------------------
+[2025-03-11T18:55:28.023+0000] {taskinstance.py:1280} INFO - Starting attempt 1 of 1
+[2025-03-11T18:55:28.023+0000] {taskinstance.py:1281} INFO - 
+--------------------------------------------------------------------------------
+[2025-03-11T18:55:28.038+0000] {taskinstance.py:1300} INFO - Executing <Task(PostgresOperator): insert_employees> on 2025-03-11 18:55:23.153643+00:00
+[2025-03-11T18:55:28.044+0000] {standard_task_runner.py:55} INFO - Started process 15655 to run task
+[2025-03-11T18:55:28.049+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'project2', 'insert_employees', 'manual__2025-03-11T18:55:23.153643+00:00', '--job-id', '305', '--raw', '--subdir', 'DAGS_FOLDER/project2.py', '--cfg-path', '/tmp/tmp0u8qznru']
+[2025-03-11T18:55:28.050+0000] {standard_task_runner.py:83} INFO - Job 305: Subtask insert_employees
+[2025-03-11T18:55:28.129+0000] {task_command.py:388} INFO - Running <TaskInstance: project2.insert_employees manual__2025-03-11T18:55:23.153643+00:00 [running]> on host 2ec744569db4
+[2025-03-11T18:55:28.211+0000] {taskinstance.py:1509} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project2
+AIRFLOW_CTX_TASK_ID=insert_employees
+AIRFLOW_CTX_EXECUTION_DATE=2025-03-11T18:55:23.153643+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2025-03-11T18:55:23.153643+00:00
+[2025-03-11T18:55:28.212+0000] {sql.py:254} INFO - Executing: CALL update_employees();
+[2025-03-11T18:55:28.221+0000] {base.py:73} INFO - Using connection ID 'postgres_conn' for task execution.
+[2025-03-11T18:55:28.431+0000] {base.py:73} INFO - Using connection ID 'postgres_conn' for task execution.
+[2025-03-11T18:55:28.451+0000] {sql.py:375} INFO - Running statement: CALL update_employees();, parameters: None
+[2025-03-11T18:55:28.474+0000] {taskinstance.py:1323} INFO - Marking task as SUCCESS. dag_id=project2, task_id=insert_employees, execution_date=20250311T185523, start_date=20250311T185528, end_date=20250311T185528
+[2025-03-11T18:55:28.501+0000] {local_task_job.py:208} INFO - Task exited with return code 0
+[2025-03-11T18:55:28.533+0000] {taskinstance.py:2578} INFO - 1 downstream tasks scheduled from follow-on schedule check

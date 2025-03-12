@@ -1,0 +1,87 @@
+[2025-03-11T17:57:22.751+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: project2.export_postgres manual__2025-03-11T17:57:12.665582+00:00 [queued]>
+[2025-03-11T17:57:22.761+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: project2.export_postgres manual__2025-03-11T17:57:12.665582+00:00 [queued]>
+[2025-03-11T17:57:22.762+0000] {taskinstance.py:1279} INFO - 
+--------------------------------------------------------------------------------
+[2025-03-11T17:57:22.762+0000] {taskinstance.py:1280} INFO - Starting attempt 1 of 1
+[2025-03-11T17:57:22.763+0000] {taskinstance.py:1281} INFO - 
+--------------------------------------------------------------------------------
+[2025-03-11T17:57:22.777+0000] {taskinstance.py:1300} INFO - Executing <Task(SSHOperator): export_postgres> on 2025-03-11 17:57:12.665582+00:00
+[2025-03-11T17:57:22.781+0000] {standard_task_runner.py:55} INFO - Started process 9681 to run task
+[2025-03-11T17:57:22.784+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'project2', 'export_postgres', 'manual__2025-03-11T17:57:12.665582+00:00', '--job-id', '292', '--raw', '--subdir', 'DAGS_FOLDER/project2.py', '--cfg-path', '/tmp/tmps3_br3kn']
+[2025-03-11T17:57:22.785+0000] {standard_task_runner.py:83} INFO - Job 292: Subtask export_postgres
+[2025-03-11T17:57:22.841+0000] {task_command.py:388} INFO - Running <TaskInstance: project2.export_postgres manual__2025-03-11T17:57:12.665582+00:00 [running]> on host 2ec744569db4
+[2025-03-11T17:57:22.902+0000] {taskinstance.py:1509} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project2
+AIRFLOW_CTX_TASK_ID=export_postgres
+AIRFLOW_CTX_EXECUTION_DATE=2025-03-11T17:57:12.665582+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2025-03-11T17:57:12.665582+00:00
+[2025-03-11T17:57:22.903+0000] {ssh.py:133} INFO - Creating ssh_client
+[2025-03-11T17:57:22.934+0000] {ssh.py:111} INFO - ssh_hook is not provided or invalid. Trying ssh_conn_id to create SSHHook.
+[2025-03-11T17:57:22.942+0000] {base.py:73} INFO - Using connection ID 'ssh_vm' for task execution.
+[2025-03-11T17:57:22.942+0000] {ssh.py:283} WARNING - No Host Key Verification. This won't protect against Man-In-The-Middle attacks
+[2025-03-11T17:57:22.951+0000] {transport.py:1874} INFO - Connected (version 2.0, client OpenSSH_9.6p1)
+[2025-03-11T17:57:22.981+0000] {transport.py:1874} INFO - Authentication (password) successful!
+[2025-03-11T17:57:22.982+0000] {ssh.py:460} INFO - Running command: export PGPASSWORD='***' && pg_dump -U postgres -h localhost -p 5432 -F c -b -v -f /tmp/backup_db.dump postgres
+[2025-03-11T17:57:23.211+0000] {ssh.py:501} WARNING - pg_dump: last built-in OID is 16383
+[2025-03-11T17:57:23.217+0000] {ssh.py:501} WARNING - pg_dump:
+[2025-03-11T17:57:23.217+0000] {ssh.py:501} WARNING -  reading extensions
+[2025-03-11T17:57:23.223+0000] {ssh.py:501} WARNING - pg_dump: identifying extension members
+[2025-03-11T17:57:23.226+0000] {ssh.py:501} WARNING - pg_dump: reading schemas
+[2025-03-11T17:57:23.228+0000] {ssh.py:501} WARNING - pg_dump: reading user-defined tables
+[2025-03-11T17:57:23.251+0000] {ssh.py:501} WARNING - pg_dump: reading user-defined functions
+[2025-03-11T17:57:23.277+0000] {ssh.py:501} WARNING - pg_dump: reading user-defined types
+[2025-03-11T17:57:23.283+0000] {ssh.py:501} WARNING - pg_dump: reading procedural languages
+[2025-03-11T17:57:23.285+0000] {ssh.py:501} WARNING - pg_dump: reading user-defined aggregate functions
+[2025-03-11T17:57:23.287+0000] {ssh.py:501} WARNING - pg_dump: reading user-defined operators
+[2025-03-11T17:57:23.289+0000] {ssh.py:501} WARNING - pg_dump: reading user-defined access methods
+[2025-03-11T17:57:23.293+0000] {ssh.py:501} WARNING - pg_dump: reading user-defined operator classes
+[2025-03-11T17:57:23.294+0000] {ssh.py:501} WARNING - pg_dump: reading user-defined operator families
+[2025-03-11T17:57:23.298+0000] {ssh.py:501} WARNING - pg_dump: reading user-defined text search parsers
+[2025-03-11T17:57:23.301+0000] {ssh.py:501} WARNING - pg_dump: reading user-defined text search templates
+[2025-03-11T17:57:23.304+0000] {ssh.py:501} WARNING - pg_dump: reading user-defined text search dictionaries
+[2025-03-11T17:57:23.307+0000] {ssh.py:501} WARNING - pg_dump: reading user-defined text search configurations
+[2025-03-11T17:57:23.310+0000] {ssh.py:501} WARNING - pg_dump: reading user-defined foreign-data wrappers
+[2025-03-11T17:57:23.315+0000] {ssh.py:501} WARNING - pg_dump: reading user-defined foreign servers
+[2025-03-11T17:57:23.318+0000] {ssh.py:501} WARNING - pg_dump: reading default privileges
+[2025-03-11T17:57:23.319+0000] {ssh.py:501} WARNING - pg_dump: reading user-defined collations
+[2025-03-11T17:57:23.325+0000] {ssh.py:501} WARNING - pg_dump: reading user-defined conversions
+[2025-03-11T17:57:23.329+0000] {ssh.py:501} WARNING - pg_dump: reading type casts
+[2025-03-11T17:57:23.331+0000] {ssh.py:501} WARNING - pg_dump: reading transforms
+[2025-03-11T17:57:23.332+0000] {ssh.py:501} WARNING - pg_dump: reading table inheritance information
+[2025-03-11T17:57:23.334+0000] {ssh.py:501} WARNING - pg_dump: reading event triggers
+[2025-03-11T17:57:23.337+0000] {ssh.py:501} WARNING - pg_dump: finding extension tables
+[2025-03-11T17:57:23.341+0000] {ssh.py:501} WARNING - pg_dump: finding inheritance relationships
+[2025-03-11T17:57:23.341+0000] {ssh.py:501} WARNING - pg_dump: reading column info for interesting tables
+[2025-03-11T17:57:23.344+0000] {ssh.py:501} WARNING - pg_dump: finding table default expressions
+[2025-03-11T17:57:23.348+0000] {ssh.py:501} WARNING - pg_dump: flagging inherited columns in subtables
+[2025-03-11T17:57:23.348+0000] {ssh.py:501} WARNING - pg_dump: reading partitioning data
+[2025-03-11T17:57:23.350+0000] {ssh.py:501} WARNING - pg_dump: reading indexes
+[2025-03-11T17:57:23.357+0000] {ssh.py:501} WARNING - pg_dump: flagging indexes in partitioned tables
+[2025-03-11T17:57:23.357+0000] {ssh.py:501} WARNING - pg_dump: reading extended statistics
+[2025-03-11T17:57:23.359+0000] {ssh.py:501} WARNING - pg_dump: reading constraints
+[2025-03-11T17:57:23.360+0000] {ssh.py:501} WARNING - pg_dump: reading triggers
+[2025-03-11T17:57:23.363+0000] {ssh.py:501} WARNING - pg_dump: reading rewrite rules
+[2025-03-11T17:57:23.367+0000] {ssh.py:501} WARNING - pg_dump: reading policies
+[2025-03-11T17:57:23.368+0000] {ssh.py:501} WARNING - pg_dump: reading row-level security policies
+[2025-03-11T17:57:23.370+0000] {ssh.py:501} WARNING - pg_dump: reading publications
+[2025-03-11T17:57:23.373+0000] {ssh.py:501} WARNING - pg_dump: reading publication membership of tables
+[2025-03-11T17:57:23.376+0000] {ssh.py:501} WARNING - pg_dump: reading publication membership of schemas
+[2025-03-11T17:57:23.379+0000] {ssh.py:501} WARNING - pg_dump: reading subscriptions
+[2025-03-11T17:57:23.385+0000] {ssh.py:501} WARNING - pg_dump:
+[2025-03-11T17:57:23.386+0000] {ssh.py:501} WARNING -  reading large objects
+[2025-03-11T17:57:23.388+0000] {ssh.py:501} WARNING - pg_dump: reading dependency data
+[2025-03-11T17:57:23.419+0000] {ssh.py:501} WARNING - pg_dump: saving encoding = UTF8
+[2025-03-11T17:57:23.420+0000] {ssh.py:501} WARNING - pg_dump: saving standard_conforming_strings = on
+[2025-03-11T17:57:23.420+0000] {ssh.py:501} WARNING - pg_dump: saving search_path = 
+[2025-03-11T17:57:23.421+0000] {ssh.py:501} WARNING - pg_dump: saving database definition
+[2025-03-11T17:57:23.438+0000] {ssh.py:501} WARNING - pg_dump: dumping contents of table "public.department"
+[2025-03-11T17:57:23.440+0000] {ssh.py:501} WARNING - pg_dump: dumping contents of table "public.employee_departments"
+[2025-03-11T17:57:23.441+0000] {ssh.py:501} WARNING - pg_dump: dumping contents of table "public.employees"
+[2025-03-11T17:57:23.443+0000] {ssh.py:501} WARNING - pg_dump: dumping contents of table "public.jobs"
+[2025-03-11T17:57:23.445+0000] {ssh.py:501} WARNING - pg_dump: dumping contents of table "public.salaries"
+[2025-03-11T17:57:23.446+0000] {ssh.py:501} WARNING - pg_dump: dumping contents of table "public.staging_hr"
+[2025-03-11T17:57:23.485+0000] {taskinstance.py:1323} INFO - Marking task as SUCCESS. dag_id=project2, task_id=export_postgres, execution_date=20250311T175712, start_date=20250311T175722, end_date=20250311T175723
+[2025-03-11T17:57:23.518+0000] {local_task_job.py:208} INFO - Task exited with return code 0
+[2025-03-11T17:57:23.538+0000] {taskinstance.py:2578} INFO - 1 downstream tasks scheduled from follow-on schedule check

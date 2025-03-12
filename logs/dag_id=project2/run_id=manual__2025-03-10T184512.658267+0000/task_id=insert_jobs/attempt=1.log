@@ -1,0 +1,52 @@
+[2025-03-10T18:45:16.780+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: project2.insert_jobs manual__2025-03-10T18:45:12.658267+00:00 [queued]>
+[2025-03-10T18:45:16.797+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: project2.insert_jobs manual__2025-03-10T18:45:12.658267+00:00 [queued]>
+[2025-03-10T18:45:16.797+0000] {taskinstance.py:1279} INFO - 
+--------------------------------------------------------------------------------
+[2025-03-10T18:45:16.798+0000] {taskinstance.py:1280} INFO - Starting attempt 1 of 1
+[2025-03-10T18:45:16.798+0000] {taskinstance.py:1281} INFO - 
+--------------------------------------------------------------------------------
+[2025-03-10T18:45:16.817+0000] {taskinstance.py:1300} INFO - Executing <Task(PostgresOperator): insert_jobs> on 2025-03-10 18:45:12.658267+00:00
+[2025-03-10T18:45:16.824+0000] {standard_task_runner.py:55} INFO - Started process 108 to run task
+[2025-03-10T18:45:16.827+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'project2', 'insert_jobs', 'manual__2025-03-10T18:45:12.658267+00:00', '--job-id', '133', '--raw', '--subdir', 'DAGS_FOLDER/project2.py', '--cfg-path', '/tmp/tmpc7_if78b']
+[2025-03-10T18:45:16.828+0000] {standard_task_runner.py:83} INFO - Job 133: Subtask insert_jobs
+[2025-03-10T18:45:16.927+0000] {task_command.py:388} INFO - Running <TaskInstance: project2.insert_jobs manual__2025-03-10T18:45:12.658267+00:00 [running]> on host f1d7771c7032
+[2025-03-10T18:45:17.016+0000] {taskinstance.py:1509} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project2
+AIRFLOW_CTX_TASK_ID=insert_jobs
+AIRFLOW_CTX_EXECUTION_DATE=2025-03-10T18:45:12.658267+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2025-03-10T18:45:12.658267+00:00
+[2025-03-10T18:45:17.017+0000] {sql.py:254} INFO - Executing: CALL update_jobs();
+[2025-03-10T18:45:17.027+0000] {base.py:73} INFO - Using connection ID 'postgres_conn' for task execution.
+[2025-03-10T18:45:17.242+0000] {base.py:73} INFO - Using connection ID 'postgres_conn' for task execution.
+[2025-03-10T18:45:17.266+0000] {sql.py:375} INFO - Running statement: CALL update_jobs();, parameters: None
+[2025-03-10T18:45:17.339+0000] {taskinstance.py:1768} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/common/sql/operators/sql.py", line 266, in execute
+    **extra_kwargs,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/common/sql/hooks/sql.py", line 349, in run
+    self._run_command(cur, sql_statement, parameters)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/common/sql/hooks/sql.py", line 380, in _run_command
+    cur.execute(sql_statement)
+psycopg2.errors.NotNullViolation: null value in column "job_id" of relation "jobs" violates not-null constraint
+DETAIL:  Failing row contains (null, null, Sales Executive, 2, 3, 4, 6, 4).
+CONTEXT:  SQL statement "INSERT INTO jobs (job_id, employee_id, JobRole, JobLevel, JobInvolvement, JobSatisfaction, YearsAtCompany, YearsInCurrentRole)
+SELECT s.job_id, s.employee_id, s.JobRole, s.JobLevel, s.JobInvolvement, s.JobSatisfaction, s.YearsAtCompany, s.YearsInCurrentRole
+FROM staging_hr s
+LEFT JOIN jobs j ON s.job_id = j.job_id
+WHERE j.job_id IS NULL"
+PL/pgSQL function update_jobs() line 3 at SQL statement
+
+[2025-03-10T18:45:17.352+0000] {taskinstance.py:1323} INFO - Marking task as FAILED. dag_id=project2, task_id=insert_jobs, execution_date=20250310T184512, start_date=20250310T184516, end_date=20250310T184517
+[2025-03-10T18:45:17.368+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 133 for task insert_jobs (null value in column "job_id" of relation "jobs" violates not-null constraint
+DETAIL:  Failing row contains (null, null, Sales Executive, 2, 3, 4, 6, 4).
+CONTEXT:  SQL statement "INSERT INTO jobs (job_id, employee_id, JobRole, JobLevel, JobInvolvement, JobSatisfaction, YearsAtCompany, YearsInCurrentRole)
+SELECT s.job_id, s.employee_id, s.JobRole, s.JobLevel, s.JobInvolvement, s.JobSatisfaction, s.YearsAtCompany, s.YearsInCurrentRole
+FROM staging_hr s
+LEFT JOIN jobs j ON s.job_id = j.job_id
+WHERE j.job_id IS NULL"
+PL/pgSQL function update_jobs() line 3 at SQL statement
+; 108)
+[2025-03-10T18:45:17.403+0000] {local_task_job.py:208} INFO - Task exited with return code 1
+[2025-03-10T18:45:17.438+0000] {taskinstance.py:2578} INFO - 0 downstream tasks scheduled from follow-on schedule check
