@@ -24,7 +24,7 @@
 <h3>4. Apache Airflow</h3>
 <ul>
   <li>Orquestrador de workflows.</li>
-  <li>Apache Airflow na máquina real (Windows)</li>
+  <li>Apache Airflow na máquina real (Windows).</li>
 </ul>
 
 <h3>5. Google Colab</h3>
